@@ -1,0 +1,12 @@
+@import './variables';
+@import './common';
+@import './default';
+
+//Components
+@import './components/shared/header';
+@import './components/shared/categoryList';
+@import './components/shared/categoryListMobile';
+
+// pages & home
+@import './pages/home/home';
+@import './pages/home/basicServices';
