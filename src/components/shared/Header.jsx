@@ -13,15 +13,11 @@ import axios from "axios";
 import CategoryList from "./CategoryList";
 import { useMediaQuery } from "react-responsive";
 import CategoryListMobile from "./CategoryListMobile";
-// import dynamic from "next/dynamic";
-
-// const CategoryList = dynamic(async () => await import("./CategoryList"), {
-//   ssr: false,
-// });
 
 const Header = () => {
   const [categories, setCategories] = useState([]);
   const isTablet = useMediaQuery({ query: "(max-width: 1200px)" });
+  const isMobile = useMediaQuery({ query: `(max-width:640px )` });
   const [menuOpen, setMenuOpen] = useState(false);
 
   // console.log(isTablet);
@@ -39,6 +35,29 @@ const Header = () => {
       });
   }, []);
 
+  const items = [
+    {
+      label: <Link href="/campaigns">Campaigns</Link>,
+      key: "1",
+    },
+    {
+      label: <Link href="/brands">Brands</Link>,
+      key: "2",
+    },
+    {
+      label: <Link href="/categories">Categories</Link>,
+      key: "3",
+    },
+    {
+      label: <Link href="#">Help</Link>,
+      key: "4",
+    },
+    {
+      label: <Link href="/categories">FAQ</Link>,
+      key: "5",
+    },
+  ];
+
   return (
     <nav className="main_header">
       <div className="main_container">
@@ -51,7 +70,7 @@ const Header = () => {
               alt="techserve4u-logo"
             />
           </Link>
-          <Search />
+          {!isMobile && <Search />}
 
           <button className="nav_button">
             <HiOutlineShoppingCart size={24} />
@@ -88,6 +107,8 @@ const Header = () => {
             )}
           </div>
 
+          {isMobile && <Search />}
+
           <div className="pages_list">
             <li>
               <Link href="/campaigns">Campaigns</Link>
@@ -105,6 +126,17 @@ const Header = () => {
               <a href="#">FAQ</a>
             </li>
           </div>
+
+          <Dropdown
+            trigger={["click"]}
+            className="nav_menu_dropdown_button"
+            overlayClassName={"nav_menu_dropdown"}
+            menu={{ items }}
+          >
+            <span onClick={(e) => e.preventDefault()}>
+              <HiMiniBars3CenterLeft size={24} color="white" />
+            </span>
+          </Dropdown>
         </div>
       </div>
     </nav>

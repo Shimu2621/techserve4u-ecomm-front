@@ -6,7 +6,10 @@
 @import './components/shared/header';
 @import './components/shared/categoryList';
 @import './components/shared/categoryListMobile';
+@import './components/home/basicServices';
+@import './components/home/featuredProducts';
+@import './components/home/productCard';
 
 // pages & home
 @import './pages/home/home';
-@import './pages/home/basicServices';
+

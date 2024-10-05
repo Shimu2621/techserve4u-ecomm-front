@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import { Pagination, Autoplay, FreeMode } from "swiper/modules";
+import Image from "next/image";
 
 const HomeSlider = () => {
   const [sliders, setSliders] = useState([]);
@@ -13,7 +14,7 @@ const HomeSlider = () => {
     axios
       .get(`${process.env.NEXT_PUBLIC_API_URL}/settings/getsliders`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setSliders(res.data.sliders);
       })
       .catch((err) => {
@@ -38,8 +39,17 @@ const HomeSlider = () => {
         {sliders?.map((slider, i) => {
           return (
             <SwiperSlide key={i}>
-              {/* <Image src={slider?.image} fill alt={slider.title} className='slider_img' /> */}
-              <img src={slider?.image} alt="" className="slider_img" />
+              {/* <Image
+                src={slider?.image}
+                alt={slider.title}
+                className="slider_img"
+              /> */}
+              <img
+                src={slider?.image}
+                alt={`Image-${slider?.title}`}
+                className="slider_img"
+                fetchpriority="high"
+              />
             </SwiperSlide>
           );
         })}
