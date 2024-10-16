@@ -1,14 +1,12 @@
 .home_slider {
-    // width: 100%;
+    width: 100%;
 
     .mySwiper {
-        max-width: 100%;
+        width: 100%;
 
         .slider_img {
-            padding: 0;
-            margin: 0;
             object-fit: cover;
-            height: auto;
+            height: 550px;
             width: 100%;
 
             @media screen and (max-width: 1440px) {

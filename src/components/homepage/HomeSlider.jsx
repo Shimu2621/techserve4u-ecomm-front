@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+
 import "swiper/css";
 import "swiper/css/pagination";
 
-import { Pagination, Autoplay, FreeMode } from "swiper/modules";
+import { Pagination, Autoplay } from "swiper/modules";
 import Image from "next/image";
 
 const HomeSlider = () => {
@@ -14,13 +15,14 @@ const HomeSlider = () => {
     axios
       .get(`${process.env.NEXT_PUBLIC_API_URL}/settings/getsliders`)
       .then((res) => {
-        // console.log(res.data);
+        console.log(res.data);
         setSliders(res.data.sliders);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
   return (
     <div className="home_slider main_container">
       <Swiper
@@ -32,24 +34,14 @@ const HomeSlider = () => {
           delay: 3000,
         }}
         loop={true}
-        freeMode={true}
-        modules={[Pagination, Autoplay, FreeMode]}
+        modules={[Pagination, Autoplay]}
         className="mySwiper"
       >
         {sliders?.map((slider, i) => {
           return (
             <SwiperSlide key={i}>
-              {/* <Image
-                src={slider?.image}
-                alt={slider.title}
-                className="slider_img"
-              /> */}
-              <img
-                src={slider?.image}
-                alt={`Image-${slider?.title}`}
-                className="slider_img"
-                fetchpriority="high"
-              />
+              {/* <Image src={slider?.image} fill alt={slider.title} className='slider_img' /> */}
+              <img src={slider?.image} alt="" className="slider_img" />
             </SwiperSlide>
           );
         })}
