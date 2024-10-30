@@ -6,6 +6,7 @@ import BasicServices from '@/components/homepage/BasicServices'
 import FeaturedProducts from '@/components/homepage/FeaturedProducts'
 import LatestProducts from '@/components/homepage/LatestProducts'
 import ShopByCategory from '@/components/homepage/ShopByCategory'
+import ProductByCategory from '@/components/homepage/ProductByCategory'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -27,6 +28,8 @@ export default function Home() {
         <LatestProducts />
 
         <ShopByCategory />
+
+        <ProductByCategory />
       </main>
     </>
   )

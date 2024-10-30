@@ -40,8 +40,16 @@ const HomeSlider = () => {
         {sliders?.map((slider, i) => {
           return (
             <SwiperSlide key={i}>
-              {/* <Image src={slider?.image} fill alt={slider.title} className='slider_img' /> */}
-              <img src={slider?.image} alt="" className="slider_img" />
+              <Image
+                src={slider?.image || "/placeholder.jpg"}
+                width={1920}
+                height={600}
+                priority
+                alt={slider?.title || "Slider image"}
+                className="slider_img"
+                style={{ objectFit: "cover" }}
+              />
+              {/* <img src={slider?.image} alt="" className="slider_img" /> */}
             </SwiperSlide>
           );
         })}
